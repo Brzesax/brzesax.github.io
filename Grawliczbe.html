@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Gra zgadywania liczby </title>
+    <style>
+      body{
+        background-color: aliceblue;
+      }
+    </style>
+</head>
+<body>
+	<h1> Gra zgadywania liczby </h1>
+	<p> Komputer wylosuje liczbę z przedziału 1-99. Twoim zadaniem jest ją odgadnąć. </p>
+
+	<input type="text" id="guess" placeholder="Podaj swoją liczbę"> 
+	<button onclick="checkGuess()"> Sprawdź </button>
+
+	<p id="message"> </p>
+    <p id="autor"> Aplikacje wykonał Dominik Kieca</p>
+
+	<script>
+		var randomNumber = Math.floor(Math.random() * 99) + 1;
+		var guesses = 0;
+
+		function checkGuess() {
+			var guess = document.getElementById("guess").value;
+			if (guess == randomNumber) {
+				guesses++;
+				document.getElementById("message").innerHTML = "Gratulacje! Zgadłeś/aś liczbę " + randomNumber + " w " + guesses + " próbach.";
+			} else if (guess < randomNumber) {
+				guesses++;
+				document.getElementById("message").innerHTML = "Podana liczba jest za mała. Spróbuj jeszcze raz.";
+			} else {
+				guesses++;
+				document.getElementById("message").innerHTML = "Podana liczba jest za duża. Spróbuj jeszcze raz.";
+			}
+		}
+	</script>
+</body>
+</html>
